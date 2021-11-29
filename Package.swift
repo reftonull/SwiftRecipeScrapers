@@ -12,6 +12,8 @@ let package = Package(
             targets: ["SwiftRecipeScrapers"]),
     ],
     dependencies: [
+        .package(url: "https://github.com/scinfu/SwiftSoup.git", from: "1.7.4"),
+        .package(url: "https://github.com/SwiftyJSON/SwiftyJSON.git", .upToNextMajor(from: "5.0.0"))
         // Dependencies declare other packages that this package depends on.
         // .package(url: /* package url */, from: "1.0.0"),
     ],
@@ -20,7 +22,7 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "SwiftRecipeScrapers",
-            dependencies: []),
+            dependencies: ["SwiftSoup", "SwiftyJSON"]),
         .testTarget(
             name: "SwiftRecipeScrapersTests",
             dependencies: ["SwiftRecipeScrapers"]),

@@ -6,6 +6,13 @@ final class SwiftRecipeScrapersTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct
         // results.
-        XCTAssertEqual(SwiftRecipeScrapers().text, "Hello, World!")
+        let result = RecipeScraper.scrape("https://www.allrecipes.com/recipe/274860/grilled-balsamic-chicken-breast/")
+        XCTAssertEqual(result, .failure(.networkError))
+        switch result {
+        case .success(let recipe):
+            print(recipe)
+        case .failure(let error):
+            print(error.localizedDescription)
+        }
     }
 }
